@@ -13,9 +13,8 @@
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="about.jsp">About</a></li>
 				<li><a
-					href="/mie350webapp/StudentController?action=listStudent">Student
-						List (Public)</a></li>
-				<li><a href="searchStudent.jsp">Search A Student</a></li>
+					href="/mie350webapp/StudentController?action=listStudent">Charity List</a></li>
+				<li><a href="searchStudent.jsp">Find an Event</a></li>
 				<li class="dropdown"><a data-toggle="dropdown"
 					href="helpful_links.jsp">Other Links<b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -32,6 +31,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="login.jsp"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+				<li><a href="signup.jsp"><span
+						class="glyphicon glyphicon-plus"></span> Sign Up </a>
 			</ul>
 
 		</div>
