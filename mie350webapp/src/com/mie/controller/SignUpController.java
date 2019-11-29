@@ -36,7 +36,7 @@ public class SignUpController extends HttpServlet{
 		List<String> existingusers = dao.getAllUsernames();
 		
 		if (existingusers.contains(username)){
-			response.sendRedirect("chooseNewUser.jsp");			//i will make this eventually :) -dani
+			response.sendRedirect("chooseNewUser.jsp");	
 		}
 		else{
 		
@@ -53,6 +53,8 @@ public class SignUpController extends HttpServlet{
 			user.setValid(true);
 			
 			dao.addUser(user);
+			
+			response.sendRedirect("userLogin.jsp");
 
 		
 		}

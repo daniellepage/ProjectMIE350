@@ -29,11 +29,13 @@
 			</ul>
 			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.jsp"><span
+				<li><a href="signup.jsp"><span
+						class="glyphicon glyphicon-plus"></span> Sign Up </a>				
+				
+				<li><a href="userLogin.jsp"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-				<li><a href="signup.jsp"><span
-						class="glyphicon glyphicon-plus"></span> Sign Up </a>
+
 			</ul>
 
 		</div>
