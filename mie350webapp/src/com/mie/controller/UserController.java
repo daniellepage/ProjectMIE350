@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mie.dao.MemberDao;
 import com.mie.dao.UserDao;
 import com.mie.model.User;
 
@@ -62,9 +61,8 @@ public class UserController extends HttpServlet {
 		if (action.equalsIgnoreCase("delete")) {
 			String username = request.getParameter("username");
 			User User = dao.getUserByUsername(username);
-			dao.deleteUser(User); //change to take a user as opposed to a username OR adjust deleteUser to take a username again (call User object in 
-			//hi tanishq here -- i think i fixed what you were concerned about by adding the line above it
-			
+			dao.deleteUser(User); 
+
 			forward = LIST_User_ADMIN;
 			request.setAttribute("Users", dao.getAllUsers());
 		
@@ -83,9 +81,11 @@ public class UserController extends HttpServlet {
 		
 		} else if (action.equalsIgnoreCase("listUserAdmin")) {
 			forward = LIST_User_ADMIN;
-			request.setAttribute("Users", dao.getAllUsers());
+			request.setAttribute("Users", dao.getAllUsers());	
+		} 
+
+		else {
 		
-		} else {
 			forward = INSERT;
 		}
 
@@ -108,11 +108,11 @@ public class UserController extends HttpServlet {
 		User.setAge(Integer.parseInt(request.getParameter("age")));
 		User.setAddress(request.getParameter("address"));
 		User.setCity(request.getParameter("city"));
-		User.setPhoneNum(Integer.parseInt(request.getParameter("phoneNum")));
+		User.setPhoneNum(request.getParameter("phoneNum"));
 		
 		String username  = request.getParameter("username");
 		
-		if (MemberDao.userExists(username)== false){
+		if (UserDao.userExists(username)== false){
 			dao.addUser(User);
 		}
 		else {

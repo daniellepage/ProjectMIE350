@@ -6,7 +6,7 @@ public class Event {
 
 	private int eventID;
 	private String eventName;
-	private int charityID;
+	private String charityName;
 	private Date eventDate;
 	private String donationType;
 	private String city;
@@ -27,12 +27,12 @@ public class Event {
 		this.eventName = EventName;
 	}
 	
-	public int getCharityID(){
-		return charityID;
+	public String getCharityName(){
+		return charityName;
 	}
 	
-	public void setCharityID(int CharityID){
-		this.charityID = CharityID;
+	public void setCharityName(String CharityName){
+		this.charityName = CharityName;
 	}
 	
 	public Date getEventDate(){

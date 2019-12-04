@@ -38,6 +38,8 @@
 				<h1>Invalid Login</h1>
 
 				Please double-check your credentials and log in again.
+				<br><a href="userLogin.jsp"> Try Again (User) </a>
+				<br><a href="adminLogin.jsp"> Try Again (Admin) </a>
 
 			</div>
 			<div class="col-sm-2 sidenav">

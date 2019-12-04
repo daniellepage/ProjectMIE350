@@ -3,7 +3,10 @@ package com.mie.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mie.dao.EventDao;
 import com.mie.dao.UserDao;
+import com.mie.model.Event;
 import com.mie.model.User;
 
 public class SearchController extends HttpServlet {
@@ -24,28 +29,37 @@ public class SearchController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static String SEARCH_USER = "/searchUserResult.jsp";
-	private UserDao dao;
+	private static String SEARCH_EVENTS = "/searchEventResult.jsp";
+	
+	private EventDao dao;
 
-	/**
-	 * Constructor for this class.
-	 */
 	public SearchController() {
 		super();
-		dao = new UserDao();
+		dao = new EventDao();
 	}
-
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		/**
 		 * This method handles the retrieval of the search keyword entered by
 		 * the user.
 		 */
-		String keyword = request.getParameter("keyword");
 
-		RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("Users", dao.getUserByKeyword(keyword));
+		String[] locs = request.getParameterValues("location");
+		List<String> locations = Arrays.asList(locs);
+		String[] don = request.getParameterValues("dontype");
+		List<String> donationTypes = Arrays.asList(don);
+		String[] cha = request.getParameterValues("chartype");
+		List<String> charityTypes = Arrays.asList(cha);
+		
+		List<Event> searchResults = new ArrayList<Event>();
+		searchResults = dao.getEventSearchResults(locations, donationTypes, charityTypes);
+
+
+		RequestDispatcher view = request.getRequestDispatcher(SEARCH_EVENTS);
+		request.setAttribute("events", searchResults);
+
+
 		/**
 		 * Redirect to the search results page after the list of Users
 		 * matching the keywords has been retrieved.

@@ -8,14 +8,24 @@
 			</button>
 			<a class="navbar-brand" href="memberLogged.jsp">MIE350 Sample Web
 				App (Admin)</a>
+				
+<%
+	session = request.getSession();
+
+	if (session.getAttribute("username") == null) {
+		response.sendRedirect("login.jsp");
+	}
+
+	
+%>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="memberLogged.jsp">Home</a></li>
 				<!-- li><a href="about.jsp">About</a></li -->
+				<li><a href = "searchEvents.jsp">Find an Event</a></li>
 				<li><a
-					href="/mie350webapp/StudentController?action=listStudentAdmin">Student
-						List (Admin)</a></li>
+					href="TaggedEventsController?action=listConfirmed" >My Events</a></li>
 			</ul>
 			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
 			<ul class="nav navbar-nav navbar-right">
